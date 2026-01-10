@@ -6,7 +6,7 @@ An Obsidian plugin for tracking fitness workouts using simple markdown.
 
 Track your workouts directly in Obsidian with interactive timers, editable values, and automatic progress tracking. All data is stored as plain markdown - easy to analyze, backup, and own forever.
 
-<!-- Screenshot: Full workout block in "planned" state showing exercises with weight/reps pills -->
+![Workout Log plugin showing rendered workout alongside markdown source](readme-files/workout-log.png)
 
 ## Features
 
@@ -49,7 +49,6 @@ restDuration: 45s
 ```
 ````
 
-<!-- Screenshot: Side-by-side of markdown source and rendered workout block -->
 
 ### Metadata
 
