@@ -75,6 +75,7 @@ export interface WorkoutCallbacks {
 	onFlushChanges: () => Promise<void>;
 	onPauseExercise: () => void;
 	onResumeExercise: () => void;
+	onAddSample: () => Promise<void>;
 }
 
 // Context passed to renderer

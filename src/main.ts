@@ -1,6 +1,6 @@
 import { Plugin, MarkdownPostProcessorContext } from 'obsidian';
 import { parseWorkout } from './parser';
-import { serializeWorkout, updateParamValue, updateExerciseState, addSet, addRest, setRecordedDuration, lockAllFields } from './serializer';
+import { serializeWorkout, updateParamValue, updateExerciseState, addSet, addRest, setRecordedDuration, lockAllFields, createSampleWorkout } from './serializer';
 import { renderWorkout } from './renderer';
 import { TimerManager } from './timer/manager';
 import { FileUpdater } from './file/updater';
@@ -292,6 +292,17 @@ export default class WorkoutLogPlugin extends Plugin {
 
 			onResumeExercise: (): void => {
 				this.timerManager.resumeExercise(workoutId);
+			},
+
+			onAddSample: async (): Promise<void> => {
+				const sampleWorkout = createSampleWorkout();
+				const newContent = serializeWorkout(sampleWorkout);
+				await this.fileUpdater?.updateCodeBlock(
+					ctx.sourcePath,
+					sectionInfo,
+					newContent,
+					sampleWorkout.metadata.title
+				);
 			}
 		};
 	}

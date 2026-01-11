@@ -160,6 +160,90 @@ export function setRecordedDuration(
 	return newParsed;
 }
 
+// Create a sample workout with comprehensive exercise examples
+export function createSampleWorkout(): ParsedWorkout {
+	const metadata = {
+		title: 'Sample Workout',
+		state: 'planned' as const,
+		restDuration: 60
+	};
+
+	const exercises: Exercise[] = [
+		{
+			state: 'pending',
+			name: 'Squats',
+			params: [
+				{ key: 'Weight', value: '60', editable: true, unit: 'kg' },
+				{ key: 'Reps', value: '12', editable: true }
+			],
+			lineIndex: 0
+		},
+		{
+			state: 'pending',
+			name: 'Rest',
+			params: [{ key: 'Duration', value: '60s', editable: true }],
+			targetDuration: 60,
+			lineIndex: 1
+		},
+		{
+			state: 'pending',
+			name: 'Push-ups',
+			params: [{ key: 'Reps', value: '15', editable: true }],
+			lineIndex: 2
+		},
+		{
+			state: 'pending',
+			name: 'Rest',
+			params: [{ key: 'Duration', value: '60s', editable: true }],
+			targetDuration: 60,
+			lineIndex: 3
+		},
+		{
+			state: 'pending',
+			name: 'Dumbbell Rows',
+			params: [
+				{ key: 'Weight', value: '20', editable: true, unit: 'kg' },
+				{ key: 'Reps', value: '10', editable: true, unit: '/arm' }
+			],
+			lineIndex: 4
+		},
+		{
+			state: 'pending',
+			name: 'Rest',
+			params: [{ key: 'Duration', value: '60s', editable: true }],
+			targetDuration: 60,
+			lineIndex: 5
+		},
+		{
+			state: 'pending',
+			name: 'Plank Hold',
+			params: [{ key: 'Duration', value: '45s', editable: true }],
+			targetDuration: 45,
+			lineIndex: 6
+		},
+		{
+			state: 'pending',
+			name: 'Rest',
+			params: [{ key: 'Duration', value: '60s', editable: true }],
+			targetDuration: 60,
+			lineIndex: 7
+		},
+		{
+			state: 'pending',
+			name: 'Lunges',
+			params: [{ key: 'Reps', value: '10', editable: true, unit: '/leg' }],
+			lineIndex: 8
+		}
+	];
+
+	return {
+		metadata,
+		exercises,
+		rawLines: [],
+		metadataEndIndex: -1
+	};
+}
+
 // Serialize workout as a clean template (for copying)
 export function serializeWorkoutAsTemplate(parsed: ParsedWorkout): string {
 	const lines: string[] = [];

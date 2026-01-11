@@ -1,5 +1,5 @@
 import { WorkoutMetadata, TimerState } from '../types';
-import { formatDuration } from '../parser/exercise';
+import { formatDuration, formatDurationHuman } from '../parser/exercise';
 
 export function renderHeader(
 	container: HTMLElement,
@@ -11,6 +11,13 @@ export function renderHeader(
 
 	const titleEl = headerEl.createDiv({ cls: 'workout-title' });
 	titleEl.textContent = metadata.title || 'Workout';
+
+	// Display rest duration if defined
+	if (metadata.restDuration) {
+		const restDurationEl = headerEl.createDiv({ cls: 'workout-rest-duration' });
+		const formattedRest = formatDurationHuman(metadata.restDuration);
+		restDurationEl.setText(`Rest: ${formattedRest}`);
+	}
 
 	const timerContainer = headerEl.createDiv({ cls: 'workout-header-timer' });
 

@@ -23,6 +23,13 @@
 	color: var(--text-normal);
 }
 
+.workout-rest-duration {
+	font-size: 0.9em;
+	font-weight: 400;
+	color: var(--text-muted);
+	white-space: nowrap;
+}
+
 .workout-header-timer {
 	display: flex;
 	align-items: center;
@@ -270,4 +277,140 @@
 	color: var(--color-green);
 	font-weight: 500;
 	font-size: 0.9em;
+}
+
+/* Empty State */
+.workout-empty-state {
+	padding: 40px 20px;
+	text-align: center;
+}
+
+.workout-empty-message {
+	color: var(--text-muted);
+	margin-bottom: 20px;
+	font-size: 0.95em;
+}
+
+.workout-empty-action {
+	display: flex;
+	justify-content: center;
+}
+
+.workout-btn-primary {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border-color: var(--interactive-accent);
+}
+
+.workout-btn-primary:hover {
+	background: var(--interactive-accent-hover);
+	border-color: var(--interactive-accent-hover);
+}
+
+.workout-btn-icon {
+	margin-right: 6px;
+}
+
+/* Mobile Responsive Layout (phones and small tablets) */
+@media (max-width: 768px) {
+	/* Workout Container - More compact */
+	.workout-container {
+		padding: 10px;
+	}
+
+	/* Header - Stack layout and reduce spacing */
+	.workout-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+		margin-bottom: 10px;
+		padding-bottom: 8px;
+	}
+
+	/* Header timer container - Full width with space-between */
+	.workout-header-timer {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	/* Rest duration on same line as timer on mobile */
+	.workout-rest-duration {
+		order: 10;
+	}
+
+	/* Exercises Container - Tighter gaps */
+	.workout-exercises {
+		gap: 3px;
+	}
+
+	/* Individual Exercise - More compact */
+	.workout-exercise {
+		padding: 6px 8px;
+	}
+
+	/* Exercise Main Row - Allow wrapping */
+	.workout-exercise-main {
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px;
+	}
+
+	/* Exercise Name - Natural width */
+	.workout-exercise-name {
+		min-width: auto;
+		flex: 0 1 auto;
+	}
+
+	/* Params Container - Force to next line, allow internal wrapping */
+	.workout-exercise-params {
+		flex-basis: 100%;
+		flex-wrap: wrap;
+		gap: 6px;
+		order: 10;
+	}
+
+	/* Individual Param Pills - Larger touch targets */
+	.workout-param {
+		height: 36px;
+		padding: 0 10px;
+		font-size: 0.95em;
+		min-width: 100px;
+	}
+
+	/* Input Fields - Much larger for touch */
+	.workout-param-input {
+		width: 60px;
+		height: 28px;
+		font-size: 1em;
+		padding: 0 4px;
+	}
+
+	/* Timer - Keep on right side of first row */
+	.workout-exercise-timer {
+		order: 5;
+	}
+
+	/* Exercise Controls - Smaller gaps */
+	.workout-exercise-controls {
+		gap: 4px;
+		margin-top: 6px;
+	}
+
+	/* Buttons - Smaller but still touch-friendly */
+	.workout-btn {
+		padding: 6px 8px;
+		font-size: 0.8em;
+		min-height: 36px;
+	}
+
+	/* Button Group - Less left margin */
+	.workout-btn-group {
+		margin-left: 6px;
+	}
+
+	/* Large Buttons - Scale down */
+	.workout-btn-large {
+		padding: 8px 14px;
+		font-size: 0.9em;
+	}
 }

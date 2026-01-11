@@ -2,6 +2,7 @@ import { ParsedWorkout, WorkoutCallbacks, TimerState } from '../types';
 import { renderHeader, updateHeaderTimer } from './header';
 import { renderExercise, updateExerciseTimer, ExerciseElements } from './exercise';
 import { renderWorkoutControls } from './controls';
+import { renderEmptyState } from './emptyState';
 import { TimerManager } from '../timer/manager';
 
 export interface RendererContext {
@@ -35,6 +36,12 @@ export function renderWorkout(ctx: RendererContext): void {
 		timerState,
 		isTimerRunning
 	);
+
+	// Check if empty workout - show "Add Sample Workout" button
+	if (parsed.exercises.length === 0 && parsed.metadata.state === 'planned') {
+		renderEmptyState(container, callbacks.onAddSample);
+		return;
+	}
 
 	// Render exercises
 	const exerciseElements: ExerciseElements[] = [];

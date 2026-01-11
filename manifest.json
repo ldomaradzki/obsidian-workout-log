@@ -1,7 +1,7 @@
 {
 	"id": "workout-log",
 	"name": "Workout Log",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "A block-rendered workout tracker with timer functionality and clean UX",
 	"author": "Lukasz",
