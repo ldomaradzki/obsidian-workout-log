@@ -112,12 +112,45 @@
 	color: var(--text-normal);
 	white-space: nowrap;
 	/* Use ch unit for character-based width */
-	min-width: calc(var(--max-name-chars, 10) * 1ch);
+	min-width: calc((var(--max-name-chars, 10) * 0.8) * 1ch);
 }
 
 /* Simple exercise (no params) - center */
 .workout-exercise.simple .workout-exercise-main {
 	justify-content: center;
+}
+
+/* Set Main Row - single line with flex layout */
+.workout-set-main {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 24px;
+}
+
+.workout-set-icon {
+	font-size: 0.9em;
+	width: 16px;
+	text-align: center;
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+.workout-set-label {
+	font-weight: 250;
+	color: var(--text-normal);
+	white-space: nowrap;
+	min-width: calc((var(--max-name-chars, 10)*0.80) * 1ch);
+	text-align: center;
+}
+
+/* Set Timer - positioned on the right */
+.workout-set-timer {
+	font-family: var(--font-monospace);
+	font-size: 0.9em;
+	color: var(--text-muted);
+	flex-shrink: 0;
+	margin-left: auto;
 }
 
 .workout-exercise.simple .workout-exercise-name {
@@ -133,12 +166,19 @@
 	flex: 1;
 }
 
+.workout-set-params {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+}
+
 .workout-param {
 	display: inline-flex;
 	align-items: center;
-	gap: 1px;
+	gap: 2px;
 	white-space: nowrap;
-	padding: 0 8px;
+	padding: 0 6px;
 	border-radius: 12px;
 	background: var(--background-modifier-hover);
 	font-size: 0.9em;
@@ -159,9 +199,11 @@
 }
 
 .workout-param-input {
-	width: 40px;
+	width: auto;
+	min-width: 42px;
+	max-width: 60px;
 	height: 20px;
-	padding: 0;
+	padding: 0 4px;
 	margin: 0;
 	border: none;
 	border-radius: 0;
@@ -196,6 +238,34 @@
 	color: var(--color-red);
 }
 
+.workout-exercise-timer.rest {
+	color: var(--color-cyan);
+}
+
+.workout-exercise-timer.rest-overtime {
+	color: var(--color-blue);
+}
+
+.workout-set-timer {
+	font-family: var(--font-monospace);
+	font-size: 0.9em;
+	color: var(--text-muted);
+	flex-shrink: 0;
+	margin-left: auto;
+}
+
+.workout-set-timer.overtime {
+	color: var(--color-red);
+}
+
+.workout-set-timer.rest {
+	color: var(--color-cyan);
+}
+
+.workout-set-timer.rest-overtime {
+	color: var(--color-red);
+}
+
 .timer-indicator {
 	margin-left: 2px;
 	font-size: 0.85em;
@@ -214,6 +284,14 @@
 }
 
 .timer-indicator.overtime {
+	color: var(--color-red);
+}
+
+.timer-indicator.rest {
+	color: var(--color-cyan);
+}
+
+.timer-indicator.rest-overtime {
 	color: var(--color-red);
 }
 
@@ -318,6 +396,7 @@
 }
 
 /* Mobile Responsive Layout (phones and small tablets) */
+/* Tablet and Larger Phone Layout (480px to 768px) */
 @media (max-width: 768px) {
 	/* Workout Container - More compact */
 	.workout-container {
@@ -354,25 +433,35 @@
 		padding: 6px 8px;
 	}
 
-	/* Exercise Main Row - Allow wrapping */
-	.workout-exercise-main {
-		flex-wrap: wrap;
+	/* Exercise & Set Main Row - Prevent wrapping to keep timer on right */
+	.workout-exercise-main,
+	.workout-set-main {
+		flex-wrap: nowrap;
 		align-items: center;
 		gap: 8px;
 	}
 
-	/* Exercise Name - Natural width */
+	/* Exercise Name & Set Label - Allow text wrap if space is tight */
 	.workout-exercise-name {
 		min-width: auto;
 		flex: 0 1 auto;
+		white-space: normal;
+		word-break: break-word;
 	}
 
-	/* Params Container - Own line but compact width */
-	.workout-exercise-params {
-		flex: 0 0 100%;
+	.workout-set-label {
+		min-width: 5ch;
+		flex: 0 1 auto;
+		white-space: normal;
+		word-break: break-word;
+	}
+
+	/* Params Container - Flexible width */
+	.workout-exercise-params,
+	.workout-set-params {
+		flex: 1 1 auto;
 		flex-wrap: wrap;
 		gap: 6px;
-		order: 10;
 		justify-content: flex-start;
 	}
 
@@ -384,17 +473,14 @@
 		font-size: 0.95em;
 	}
 
-	/* Input Fields - Much larger for touch */
+	/* Input Fields - Much larger for touch, flexible width */
 	.workout-param-input {
-		width: 60px;
+		width: auto;
+		min-width: 60px;
+		max-width: 100px;
 		height: 28px;
 		font-size: 1em;
 		padding: 0 4px;
-	}
-
-	/* Timer - Keep on right side of first row */
-	.workout-exercise-timer {
-		order: 5;
 	}
 
 	/* Exercise Controls - Smaller gaps */
@@ -420,4 +506,111 @@
 		padding: 8px 14px;
 		font-size: 0.9em;
 	}
+}
+
+/* Small Phone Layout (max 480px) */
+@media (max-width: 480px) {
+	/* Workout Container - Slightly more compact padding */
+	.workout-container {
+		padding: 8px;
+	}
+
+	/* Header - Keep stacking but potentially smaller gaps/padding */
+	.workout-header {
+		gap: 4px;
+		margin-bottom: 8px;
+		padding-bottom: 6px;
+	}
+
+	/* Exercises Container - Tighter gaps */
+	.workout-exercises {
+		gap: 2px;
+	}
+
+	/* Individual Exercise - More compact */
+	.workout-exercise {
+		padding: 4px 6px;
+	}
+
+	/* Exercise & Set Main Row - Tighter gaps */
+	.workout-exercise-main,
+	.workout-set-main {
+		gap: 4px;
+	}
+
+	/* Params Container - Tighter gaps */
+	.workout-exercise-params{
+		gap: 2px;
+	}
+	.workout-set-params {
+		gap: 4px;
+	}
+
+	/* Individual Param Pills - Smaller touch targets, compact width */
+	.workout-param {
+		height: 32px;
+		padding: 0 8px;
+		font-size: 0.9em;
+	}
+
+	/* Input Fields - Smaller for touch, flexible width */
+	.workout-param-input {
+		min-width: 45px;
+		max-width: 80px;
+		height: 24px;
+		font-size: 0.9em;
+	}
+
+	/* Buttons - Even smaller for very small screens */
+	.workout-btn {
+		padding: 4px 6px;
+		font-size: 0.75em;
+		min-height: 32px;
+	}
+}
+
+/* Rest Timer Color Phases */
+@keyframes rest-green-pulse {
+	0%, 100% {
+		background-color: rgba(76, 175, 80, 0.1);
+	}
+	50% {
+		background-color: rgba(76, 175, 80, 0.3);
+	}
+}
+
+@keyframes rest-yellow-pulse {
+	0%, 100% {
+		background-color: rgba(255, 193, 7, 0.1);
+	}
+	50% {
+		background-color: rgba(255, 193, 7, 0.3);
+	}
+}
+
+@keyframes rest-red-pulse {
+	0%, 100% {
+		background-color: rgba(244, 67, 54, 0.1);
+	}
+	50% {
+		background-color: rgba(244, 67, 54, 0.4);
+	}
+}
+
+/* Green phase: 66-100% remaining - Calm pulsing green */
+.workout-set.rest-phase-green {
+	animation: rest-green-pulse 2s ease-in-out infinite;
+	border-left: 4px solid rgba(76, 175, 80, 0.6);
+}
+
+/* Yellow phase: 33-66% remaining - Faster pulsing yellow */
+.workout-set.rest-phase-yellow {
+	animation: rest-yellow-pulse 1s ease-in-out infinite;
+	border-left: 4px solid rgba(255, 193, 7, 0.8);
+}
+
+/* Red phase: 0-33% remaining - Rapid pulsing red */
+.workout-set.rest-phase-red {
+	animation: rest-red-pulse 0.5s ease-in-out infinite;
+	border-left: 4px solid rgba(244, 67, 54, 0.95);
 }

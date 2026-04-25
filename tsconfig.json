@@ -21,10 +21,14 @@
 			"DOM",
 			"ES5",
 			"ES6",
-			"ES7"
+			"ES7",
+			"ES2019"
 		]
 	},
 	"include": [
 		"src/**/*.ts"
+	],
+	"exclude": [
+		"**/*.test.ts"
 	]
 }

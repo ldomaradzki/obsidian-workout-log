@@ -1,18 +1,30 @@
 {
 	"name": "obsidian-workout-log",
-	"version": "1.1.1",
+	"version": "1.1.3",
 	"description": "A block-rendered workout tracker for Obsidian with timer functionality",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"test": "jest",
+		"test:coverage": "jest --coverage"
 	},
-	"keywords": ["obsidian", "workout", "fitness", "timer"],
+	"keywords": [
+		"obsidian",
+		"workout",
+		"fitness",
+		"timer"
+	],
 	"license": "MIT",
 	"devDependencies": {
+		"@types/jest": "^30.0.0",
+		"@types/jsdom": "^28.0.1",
 		"@types/node": "^16.11.6",
 		"esbuild": "0.25.5",
+		"jest": "^30.3.0",
+		"jsdom": "^29.0.2",
+		"ts-jest": "^29.4.9",
 		"tslib": "2.4.0",
 		"typescript": "^5.8.3"
 	},

@@ -1,9 +1,9 @@
 {
 	"id": "workout-log",
 	"name": "Workout Log",
-	"version": "1.1.1",
+	"version": "1.1.3",
 	"minAppVersion": "1.5.0",
 	"description": "Render workout blocks as interactive trackers with built-in timers.",
-	"author": "Lukasz",
+	"author": "erikparra",
 	"isDesktopOnly": false
 }

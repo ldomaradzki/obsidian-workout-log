@@ -1,6 +1,33 @@
 # Sample Workouts
 
-## Full Body Strength
+## Upper Body Strength (with nested sets)
+
+```workout
+title: Upper Body Strength
+state: planned
+startDate:
+duration:
+---
+- [ ] Bench Press | Duration: [300s]
+  - [ ] Reps: [10] | Weight: [225] | Rest: [90s]
+  - [ ] Reps: [8] | Weight: [235] | Rest: [90s]
+  - [ ] Reps: [6] | Weight: [245] | Rest: [120s]
+- [ ] Barbell Rows | Duration: [300s]
+  - [ ] Reps: [10] | Weight: [225] | Rest: [90s]
+  - [ ] Reps: [8] | Weight: [235] | Rest: [90s]
+  - [ ] Reps: [6] | Weight: [245] | Rest: [120s]
+- [ ] Rest | Duration: [60s]
+  - [ ] Duration: [60s]
+- [ ] Overhead Press | Duration: [180s]
+  - [ ] Reps: [8] | Weight: [155] | Rest: [60s]
+  - [ ] Reps: [6] | Weight: [165] | Rest: [120s]
+- [ ] Lat Pulldown | Duration: [200s]
+  - [ ] Reps: [12] | Weight: [180] | Rest: [60s]
+  - [ ] Reps: [10] | Weight: [200] | Rest: [60s]
+  - [ ] Reps: [8] | Weight: [220] | Rest: [90s]
+```
+
+## Full Body Strength (legacy format)
 
 ```workout
 title: Full Body Strength
@@ -32,15 +59,19 @@ startDate:
 duration:
 ---
 - [ ] Cat-Cow Stretch | Duration: [60s]
-- [ ] World's Greatest Stretch | Reps: [5] /side
-- [ ] Rest | Duration: [15s]
-- [ ] Hip Circles | Reps: [10] /direction
-- [ ] Rest | Duration: [15s]
+  - [ ] Duration: [60s]
+- [ ] World's Greatest Stretch
+  - [ ] Reps: [5] /side
+- [ ] Hip Circles
+  - [ ] Reps: [10] /direction
 - [ ] Arm Circles | Duration: [30s]
-- [ ] Thoracic Rotations | Reps: [8] /side
-- [ ] Rest | Duration: [15s]
+  - [ ] Duration: [30s]
+- [ ] Thoracic Rotations
+  - [ ] Reps: [8] /side
 - [ ] Deep Squat Hold | Duration: [45s]
-- [ ] Ankle Circles | Reps: [10] /foot
+  - [ ] Duration: [45s]
+- [ ] Ankle Circles
+  - [ ] Reps: [10] /foot
 ```
 
 ## Quick HIIT

@@ -11,7 +11,7 @@ Track your workouts directly in Obsidian with interactive timers, editable value
 ## Features
 
 - **Timers**: Count-up for exercises, countdown for rest periods with auto-advance
-- **Editable values**: Click to edit weight, reps, or duration during workout
+- **Editable values**: Click to edit weight or reps during workout
 - **Add Set / Add Rest**: Quickly add extra sets or rest periods on the fly
 - **Skip / Pause / Resume**: Full control over your workout flow
 - **Copy as Template**: Reuse completed workouts as templates
@@ -25,7 +25,7 @@ The easiest way to install and keep the plugin updated, especially useful for mo
 1. Install the [BRAT](https://github.com/TfTHacker/obsidian42-brat) plugin from Obsidian's Community Plugins
 2. Open BRAT settings (Settings → BRAT)
 3. Click "Add Beta plugin"
-4. Enter: `https://github.com/ldomaradzki/obsidian-workout-log`
+4. Enter: `https://github.com/erikparra/obsidian-workout-log`
 5. Enable the plugin in Settings → Community Plugins
 
 BRAT will automatically check for updates and notify you when new versions are available. Perfect for mobile users who can't manually copy files!
@@ -51,10 +51,15 @@ startDate:
 duration:
 restDuration: 45s
 ---
-- [ ] Squats | Weight: [60] kg | Reps: [10]
-- [ ] Rest | Duration: [45s]
-- [ ] Bench Press | Weight: [40] kg | Reps: [8]
-- [ ] Plank | Duration: [60s]
+- [ ] Squats 
+  - [ ] Weight: [140] lbs | Reps: [5] | Rest: 45s
+  - [ ] Weight: [120] lbs | Reps: [8] | Rest: 45s
+  - [ ] Weight: [100] lbs | Reps: [10] | Rest: 45s
+- [ ] Bench Press 
+  - [ ] Weight: [100] lbs | Reps: [10] | Rest: 45s
+  - [ ] Weight: [100] lbs | Reps: [8] | Rest: 45s
+  - [ ] Weight: [100] lbs | Reps: [4] | Rest: 45s
+- [ ] Plank | Duration: [60s] | Rest: 45s
 ```
 ````
 
@@ -70,9 +75,16 @@ restDuration: 45s
 | `restDuration` | Default duration for "+ Rest" button |
 
 ### Exercise Format
+#### Single Set Exercise
 
 ```
 - [ ] Exercise Name | Key: [value] unit | Key: value
+```
+#### Multi Set Exercise
+```
+- [ ] Exercise Name 
+  - [ ] Key: [value] unit | Key: value
+  - [ ] Key: [value] unit | Key: value
 ```
 
 - `[ ]` pending, `[\]` in progress, `[x]` completed, `[-]` skipped
